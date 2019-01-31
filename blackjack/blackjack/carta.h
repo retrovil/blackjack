@@ -17,8 +17,8 @@ public:
 	Carta(Rango, Palo, bool);
 	~Carta();
 
-	Rango getValor();
-	Palo getPalo();
+	Rango getValor() const;
+	Palo getPalo() const;
 
 	void setValor(Rango);
 	void setPalo(Palo);

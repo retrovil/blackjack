@@ -16,7 +16,9 @@ Mazo::~Mazo() {
 	for (int i = 0; i < NUMCARTAS; ++i)
 		if (naipe[i] != nullptr)
 			delete naipe[i];
+
 	delete[] naipe;
+	naipe = nullptr;
 }
 
 // Inicializa un Mazo 
@@ -37,19 +39,20 @@ void Mazo::inicializar() {
 
 // Toma el mazo y desordena las cartas moviéndolas en diferentes posiciones del vector de manera aleatoria
 void Mazo::barajar() {
-	
-	// TODO
-	// Crear un algoritmo para desordenar las cartas en el vector similar a
-	//            std::random_shuffle(naipe[0], naipe[NUMCARTAS - 1]);
+	// Utilizado para generar un número aleatorio no determinístico (depende de la implementación)
+	// No recomendable si la portabilidad es importante
+	// Solución no óptima para generar números pseudoaleatorios (PRNG)
+	std::random_device rd;
+	std::default_random_engine generador(rd());
+
+	std::shuffle(naipe, naipe + NUMCARTAS, generador);
 }
 
 // Función que obtiene la dirección de memoria de la primera carta del mazo y la retorna
 // La siguiente carta del mazo es la primera
 Carta* Mazo::tomarCarta() {
 	Carta* tmp = naipe[primera];
-	
-	naipe[primera] = nullptr;
-	++primera;
+	naipe[primera++] = nullptr;
 	
 	return tmp;
 }

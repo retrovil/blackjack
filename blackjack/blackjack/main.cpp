@@ -4,17 +4,20 @@
 #include <iostream>
 
 int main() {
+
 	Mazo m;
 
-	//m.barajar();
+	m.barajar();
 
-	for (int i = 0; i < NUMCARTAS; ++i) {
-		for (int j = 0; j < 13; ++j) {
+	// Método para mostrar las cartas del mazo
+	for (int i = 0; i < MAX_PALOS; ++i) {
+		for (int j = 0; j < MAX_RANGO; ++j) {
 			Carta* tmp = m.tomarCarta();
 			std::cout << static_cast<int>(tmp->getValor()) << static_cast<int>(tmp->getPalo()) << " ";
+			delete tmp;
 		}
 		std::cout << std::endl;
-	}
+	} 
 
 	return 0;
 }

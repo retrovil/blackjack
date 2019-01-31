@@ -5,7 +5,9 @@
 #define MAZO_H
 
 #include "carta.h"
+#include <random>
 #include <algorithm>
+
 
 // Tamaño de la baraja
 #define NUMCARTAS	52

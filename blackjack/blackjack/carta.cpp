@@ -25,10 +25,10 @@ void Carta::setPalo(Palo p) { paloCarta = p; }
 void Carta::ponerBocaArriba(bool b) { bocaArriba = b; }
 
 // Retorna el valor de la carta
-Rango Carta::getValor() { return valorCarta; }
+Rango Carta::getValor() const { return valorCarta; }
 
 // Retorna el palo de la carta
-Palo Carta::getPalo() { return paloCarta; }
+Palo Carta::getPalo() const { return paloCarta; }
 
 // Voltea la carta - boca arriba a boca abajo o viceversa
 void Carta::voltear() { bocaArriba = !bocaArriba; }
