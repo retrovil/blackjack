@@ -36,10 +36,11 @@ void Mazo::inicializar() {
 }
 
 // Toma el mazo y desordena las cartas moviéndolas en diferentes posiciones del vector de manera aleatoria
-// Utiliza la función 'random_shuffle' de la biblioteca estándar de C++ (Librería <algorithm>)
 void Mazo::barajar() {
 	
-	// std::random_shuffle(naipe[0], naipe[NUMCARTAS - 1]);
+	// TODO
+	// Crear un algoritmo para desordenar las cartas en el vector similar a
+	//            std::random_shuffle(naipe[0], naipe[NUMCARTAS - 1]);
 }
 
 // Función que obtiene la dirección de memoria de la primera carta del mazo y la retorna
