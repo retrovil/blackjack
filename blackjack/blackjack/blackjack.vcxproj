@@ -119,11 +119,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="carta.h" />
+    <ClInclude Include="JugadorGenerico.h" />
+    <ClInclude Include="lista.h" />
+    <ClInclude Include="mano.h" />
     <ClInclude Include="mazo.h" />
+    <ClInclude Include="nodo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="carta.cpp" />
+    <ClCompile Include="lista.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mano.cpp" />
     <ClCompile Include="mazo.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

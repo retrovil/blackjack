@@ -5,7 +5,7 @@
 
 // Constructor por Default
 // Crea un AS de ESPADAS y boca abajo
-Carta::Carta() : valorCarta(Rango::A), paloCarta(Palo::ESPADAS), bocaArriba(false) { }
+Carta::Carta() : valorCarta(Rango::AS), paloCarta(Palo::ESPADAS), bocaArriba(false) { }
 
 // Constructor por parámetros
 // Recibe el rango, palo y la posición inicial de la carta

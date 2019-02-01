@@ -12,13 +12,7 @@ Mazo::Mazo() : naipe(nullptr), primera(0) {
 // Destructor
 // Libera toda la memoria asignada al Mazo
 Mazo::~Mazo() {
-	//Eliminamos todas las cartas del mazo 
-	for (int i = 0; i < NUMCARTAS; ++i)
-		if (naipe[i] != nullptr)
-			delete naipe[i];
-
-	delete[] naipe;
-	naipe = nullptr;
+	limpiar();
 }
 
 // Inicializa un Mazo 
@@ -38,9 +32,10 @@ void Mazo::inicializar() {
 }
 
 // Toma el mazo y desordena las cartas moviéndolas en diferentes posiciones del vector de manera aleatoria
+// Utiliza la función de la librería estándar 'shufle' para tal fin
 void Mazo::barajar() {
 	// Utilizado para generar un número aleatorio no determinístico (depende de la implementación)
-	// No recomendable si la portabilidad es importante
+	// No recomendado si la portabilidad es importante
 	// Solución no óptima para generar números pseudoaleatorios (PRNG)
 	std::random_device rd;
 	std::default_random_engine generador(rd());
@@ -48,8 +43,21 @@ void Mazo::barajar() {
 	std::shuffle(naipe, naipe + NUMCARTAS, generador);
 }
 
+void Mazo::limpiar() {
+	// Eliminamos todas las cartas del mazo. Hay que cuidar de no intentar una posición en donde no exista un apuntador
+	// Las cartas se fueron sacando del mazo
+	for (int i = primera; i < NUMCARTAS; ++i)
+		if (naipe[i] != nullptr)
+			delete naipe[i];
+
+	delete[] naipe;
+	naipe = nullptr;
+	primera = 0;
+}
+
 // Función que obtiene la dirección de memoria de la primera carta del mazo y la retorna
-// La siguiente carta del mazo es la primera
+// La posición del vector en donde se encontraba la carta se marca como 'nullptr'
+// La siguiente carta del mazo se convierte en la primera
 Carta* Mazo::tomarCarta() {
 	Carta* tmp = naipe[primera];
 	naipe[primera++] = nullptr;

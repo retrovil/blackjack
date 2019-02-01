@@ -8,7 +8,7 @@
 #define	MAX_PALOS	4
 
 // Declaramos dos enumeraciones para manejar el rango y el palo de cada carta
-enum class Rango { A = 1, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, DIEZ, J, Q, K };
+enum class Rango { AS = 1, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, DIEZ, J, Q, K };
 enum class Palo { ESPADAS, CORAZONES, DIAMANTES, TREBOLES };
 
 class Carta {

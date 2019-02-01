@@ -19,6 +19,7 @@ public:
 
 	void inicializar();
 	void barajar();
+	void limpiar();
 	Carta* tomarCarta();
 
 private:
