@@ -1,7 +1,7 @@
 #ifndef NODO_H
 #define NODO_H
 
-#include "JugadorGenerico.h"
+#include "jugadorgenerico.h"
 
 class Nodo {
 public:

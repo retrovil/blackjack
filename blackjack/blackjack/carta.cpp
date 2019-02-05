@@ -21,7 +21,7 @@ void Carta::setValor(Rango r) { valorCarta = r; }
 // Actualiza el palo de la carta 
 void Carta::setPalo(Palo p) { paloCarta = p; }
 
-// Actualiza el valor de la carta - Rango 
+// Actualiza si la carta está boca arriba o boca abajo
 void Carta::ponerBocaArriba(bool b) { bocaArriba = b; }
 
 // Retorna el valor de la carta

@@ -1,9 +1,12 @@
 // main.cpp
 
+#include "juego.h"
 #include "mazo.h"
-#include <iostream>
 
 int main() {
 
+	Juego J;
+	J.run();
+	
 	return 0;
 }
