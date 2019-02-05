@@ -5,6 +5,7 @@
 #define JUEGO_H
 
 #include <iostream>
+#include <cctype>
 #include <chrono>
 #include <thread>
 #include <windows.h>
@@ -28,7 +29,10 @@ private:
 	void intro();
 	void menuPrincipal();
 	void nuevoJuego();
+	void obtenerJugadores();
 	void repartirCartas();
+	void mostrarMesa();
+	void dibujarCarta(Carta*);
 	void cargarJuego();
 };
 

@@ -19,10 +19,10 @@ public:
 
 	Rango getValor() const;
 	Palo getPalo() const;
+	bool estaBocaArriba() const;
 
 	void setValor(Rango);
 	void setPalo(Palo);
-	void ponerBocaArriba(bool);
 
 	void voltear();
 

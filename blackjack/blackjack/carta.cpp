@@ -21,14 +21,13 @@ void Carta::setValor(Rango r) { valorCarta = r; }
 // Actualiza el palo de la carta 
 void Carta::setPalo(Palo p) { paloCarta = p; }
 
-// Actualiza si la carta está boca arriba o boca abajo
-void Carta::ponerBocaArriba(bool b) { bocaArriba = b; }
-
 // Retorna el valor de la carta
 Rango Carta::getValor() const { return valorCarta; }
 
 // Retorna el palo de la carta
 Palo Carta::getPalo() const { return paloCarta; }
+
+bool Carta::estaBocaArriba() const { return bocaArriba; }
 
 // Voltea la carta - boca arriba a boca abajo o viceversa
 void Carta::voltear() { bocaArriba = !bocaArriba; }

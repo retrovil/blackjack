@@ -21,6 +21,9 @@ public:
 	void pasar() { turno = false; }
 	void setNickname(std::string n) { nickname = n; }
 
+	std::string getNickname() { return nickname; }
+	Mano* getManoJugador() { return &manoJugador; }
+
 protected:
 	std::string nickname;
 	Mano manoJugador;

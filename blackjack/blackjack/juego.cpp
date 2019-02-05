@@ -8,7 +8,7 @@ Juego::Juego() : listaJugadores(nullptr), baraja(nullptr) { }
 Juego::~Juego() { }
 
 void Juego::run() {
-	intro();
+	//intro();
 	menuPrincipal();
 }
 
@@ -81,7 +81,7 @@ void Juego::menuPrincipal() {
 
 		switch (opcion) {
 		case '1':
-			// nuevoJuego();
+			nuevoJuego();
 			break;
 		case '2':
 			// cargarJuego();
@@ -94,11 +94,17 @@ void Juego::menuPrincipal() {
 }
 
 void Juego::nuevoJuego() {
+	obtenerJugadores();
+	repartirCartas();
+	mostrarMesa();	
+} 
+
+void Juego::obtenerJugadores() {
 	int numJugadores;
 	std::string nombreJugador;
 
-	
-	
+	listaJugadores = new Lista();
+	   
 	std::cin.ignore();
 	std::cin.clear();
 
@@ -109,13 +115,16 @@ void Juego::nuevoJuego() {
 		std::cout << "  DIGITE LA CANTIDAD DE JUGADORES ( 1 - 7 ): ";
 
 		std::cin >> numJugadores;
-	
-	} while (numJugadores < 1 || numJugadores > 7 || !isalnum(numJugadores));
+
+	} while (numJugadores < 1 || numJugadores > 7 || isalpha(numJugadores));
 
 	system("cls");
 
+	std::cin.ignore();
+	std::cin.clear();
+
 	for (int i = 1; i <= numJugadores; ++i) {
-		std::cout << "DIGITE EL NOMBRE DEL JUGADOR #" << i << " :";
+		std::cout << "DIGITE EL NOMBRE DEL JUGADOR #" << i << ": ";
 		std::getline(std::cin, nombreJugador);
 
 		JugadorGenerico* nuevoJugador = new Jugador(nombreJugador, false);
@@ -126,7 +135,7 @@ void Juego::nuevoJuego() {
 
 	JugadorGenerico* laCasa = new Dealer("LA CASA", false, false);
 	listaJugadores->insertarElemento(laCasa);
-} 
+}
 
 void Juego::repartirCartas() {
 	Mazo* barajaCartas = new Mazo();
@@ -139,3 +148,89 @@ void Juego::repartirCartas() {
 	}
 }
 
+void Juego::mostrarMesa() {
+	system("cls");
+
+	Lista::iterador tmp = listaJugadores->getInicio();
+	Carta** mano;
+
+	while (tmp) {
+		std::cout << "----------------------" << std::endl;
+		std::cout << tmp->getDato()->getNickname() << std::endl;
+		mano = tmp->getDato()->getManoJugador()->getMano();
+		int cartasMano = tmp->getDato()->getManoJugador()->getCantidad();
+		for (int i = 0; i < cartasMano; ++i)
+			dibujarCarta(mano[i]);
+		tmp = tmp->getNext();
+		std::cout << std::endl;
+	}
+
+	std::cin.get();
+}
+
+void Juego::dibujarCarta(Carta* c) {
+	if (!c->estaBocaArriba()) {
+		std::cout <<
+			"\t\t.--------. " << std::endl <<
+			"\t\t|XXXXXXXX| " << std::endl <<
+			"\t\t|XXXXXXXX| " << std::endl <<
+			"\t\t|XXXXXXXX| " << std::endl <<
+			"\t\t|XXXXXXXX| " << std::endl <<
+			"\t\t`--------' ";
+	}
+	else {
+		Rango valorOriginal = c->getValor();
+		char rango;
+
+		if (valorOriginal == Rango::AS)
+			rango = 'A';
+		else if (valorOriginal == Rango::J)
+			rango = 'J';
+		else if (valorOriginal == Rango::Q)
+			rango = 'Q';
+		else if (valorOriginal == Rango::K)
+			rango = 'K';
+		else
+			rango = static_cast<char>(valorOriginal) + '0';
+
+
+		switch (c->getPalo()) {
+		case Palo::TREBOLES:
+			std::cout <<
+				"\t\t.--------. " << std::endl <<
+				"\t\t|" << rango << " .--.  | " << std::endl <<
+				"\t\t|  :():  | " << std::endl <<
+				"\t\t|  ()()  | " << std::endl <<
+				"\t\t|  '--'" << rango << " | " << std::endl <<
+				"\t\t`--------' " << std::endl;
+			break;
+		case Palo::CORAZONES:
+			std::cout <<
+				"\t\t.--------. " << std::endl <<
+				"\t\t|" << rango << " .--.  | " << std::endl <<
+				"\t\t|  (\\/)  | " << std::endl <<
+				"\t\t|  :\\/:  | " << std::endl <<
+				"\t\t|  '--'" << rango << " | " << std::endl <<
+				"\t\t`--------' " << std::endl;
+			break;
+		case Palo::ESPADAS:
+			std::cout <<
+				"\t\t.--------. " << std::endl <<
+				"\t\t|" << rango << " .--.  | " << std::endl <<
+				"\t\t|  :/\\:  | " << std::endl <<
+				"\t\t|  (__)  | " << std::endl <<
+				"\t\t|  '--'" << rango << " | " << std::endl <<
+				"\t\t`--------' " << std::endl;
+			break;
+		case Palo::DIAMANTES:
+			std::cout <<
+				"\t\t.--------. " << std::endl <<
+				"\t\t|" << rango << " .--.  | " << std::endl <<
+				"\t\t|  :/\\:  | " << std::endl <<
+				"\t\t|  :\\/:  | " << std::endl <<
+				"\t\t|  '--'" << rango << " | " << std::endl <<
+				"\t\t`--------' " << std::endl;
+			break;
+		}
+	}
+}
