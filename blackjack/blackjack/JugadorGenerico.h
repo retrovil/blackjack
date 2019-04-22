@@ -15,7 +15,7 @@ public:
 	JugadorGenerico(std::string n, bool t) : nickname(n), turno(t) { }  
 	virtual ~JugadorGenerico() { }
 
-	virtual Carta* pedirCarta(Mazo*) = 0; // lok se la come doblada
+	virtual Carta* pedirCarta(Mazo*) = 0; // prueba
 	virtual void setManoInicial(Mazo*) = 0;
 
 	void pasar() { turno = false; }
