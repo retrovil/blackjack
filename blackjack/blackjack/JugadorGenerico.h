@@ -1,5 +1,5 @@
 // jugadorgenerico.h
-// Declaración de la clase abstracta JugadorGenerico
+// DeclaraciÃ³n de la clase abstracta JugadorGenerico
 
 #ifndef JUGADORGENERICO_H
 #define JUGADORGENERICO_H
@@ -15,7 +15,7 @@ public:
 	JugadorGenerico(std::string n, bool t) : nickname(n), turno(t) { }  
 	virtual ~JugadorGenerico() { }
 
-	virtual Carta* pedirCarta(Mazo*) = 0;
+	virtual Carta* pedirCarta(Mazo*) = 0; // lok se la come doblada
 	virtual void setManoInicial(Mazo*) = 0;
 
 	void pasar() { turno = false; }
